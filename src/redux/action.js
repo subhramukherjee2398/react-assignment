@@ -2,13 +2,14 @@
 import { auth } from '../firebase';
 import * as types from './actionType';
 
-const registerStart = () =>(
+export const registerStart = (data) =>(
     {
-        type : types.REGISTER_START
+        type : types.REGISTER_START,
+        payload:data
     }
 )
 
-const registerSucess = () =>(
+/* const registerSucess = () =>(
     {
         type : types.REGISTER_SUCCESSS,
         payload: "",
@@ -20,9 +21,9 @@ const registerFail = () =>(
         type : types.REGISTER_FAIL,
         payload : "",
     }
-)
+) */
 
-export const registerInitiate = (email,password,displayName) =>{
+/* export const registerInitiate = (email,password,displayName) =>{
     return function(dispatch){
         dispatch(registerStart());
         auth.createUserWithEmailAndPassword(email,password).then((user)=>{
@@ -33,4 +34,4 @@ export const registerInitiate = (email,password,displayName) =>{
             .catch((error)=> dispatch(registerFail(error.message)))
         })
     }
-}
+} */
