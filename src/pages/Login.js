@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 function Login() {
   const initialvalues = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -18,7 +18,7 @@ function Login() {
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    email: Yup.string()
       .email("please enter a valid email")
       .required("please enter email"),
     password: Yup.string().required("please enter password"),
@@ -35,13 +35,13 @@ function Login() {
         {(props) => (
           <Form>
             <div>
-              <label>Username</label>
+              <label>Email</label>
               <Field
                 type="text"
-                name="username"
+                name="email"
                 placeholder="Enter your name"
               />
-              <p style={{ color: "red" }}>{<ErrorMessage name="username" />}</p>
+              <p style={{ color: "red" }}>{<ErrorMessage name="email" />}</p>
             </div>
             <div>
               <label>Password</label>
