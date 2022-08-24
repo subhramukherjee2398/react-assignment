@@ -1,37 +1,35 @@
 
-import { auth } from '../firebase';
+import { auth,updateProfile } from '../firebase';
 import * as types from './actionType';
 
-export const registerStart = (data) =>(
+const registerStart = () => (
     {
-        type : types.REGISTER_START,
-        payload:data
+        type: types.REGISTER_START,
     }
 )
 
-/* const registerSucess = () =>(
+const registerSucess = (user) => (
     {
-        type : types.REGISTER_SUCCESSS,
-        payload: "",
+        type: types.REGISTER_SUCCESSS,
+        payload: user,
     }
 )
 
-const registerFail = () =>(
+const registerFail = (error) => (
     {
-        type : types.REGISTER_FAIL,
-        payload : "",
+        type: types.REGISTER_FAIL,
+        payload: error,
     }
-) */
+)
 
-/* export const registerInitiate = (email,password,displayName) =>{
-    return function(dispatch){
+export const registerInitiate = (userData) => {
+
+    return function (dispatch) {
         dispatch(registerStart());
-        auth.createUserWithEmailAndPassword(email,password).then((user)=>{
-            user.updateProfile({
-                displayName
-            })
+        auth.createUserWithEmailAndPassword(userData.email, userData.password).then((user) => {
+            /*user.updateProfile({ displayName: userData.username })*/
+             // displayname is the inbuilt firebase function
             dispatch(registerSucess(user))
-            .catch((error)=> dispatch(registerFail(error.message)))
-        })
+        }).catch((error) => dispatch(registerFail(error.message)))
     }
-} */
+} 

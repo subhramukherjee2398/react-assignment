@@ -2,7 +2,8 @@ import React from "react";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux'
-import { registerStart } from "../redux/action";
+import {registerInitiate} from '../redux/action'
+
 
 function Register() {
 
@@ -15,14 +16,11 @@ function Register() {
   };
 
   const onSubmit = (values, props) => {
-    console.log(values);
-    console.log(props);
     setTimeout(() => {
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);
-    dispatch(registerStart(values))
-
+    dispatch(registerInitiate(values))
   };
 
   const validationSchema = Yup.object().shape({
