@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from 'react-redux'
-import {registerInitiate} from '../redux/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { registerInitiate } from '../redux/action'
+import { useNavigate } from 'react-router-dom'
 
 
 function Register() {
 
   const dispatch = useDispatch();
+ /*  const userData = useSelector((state) => state.user); */
+  /* let currentUser = userData?.currentUser;
+
+  const navigate = useNavigate(); */
+
+
+  /*useEffect(() => {
+    console.log(userData)
+    if (userData) {
+      navigate('/');
+    }
+  }, [userData,navigate])*/
 
   const initialvalues = {
     username: "",
@@ -17,10 +30,10 @@ function Register() {
 
   const onSubmit = (values, props) => {
     setTimeout(() => {
+      dispatch(registerInitiate(values))
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);
-    dispatch(registerInitiate(values))
   };
 
   const validationSchema = Yup.object().shape({

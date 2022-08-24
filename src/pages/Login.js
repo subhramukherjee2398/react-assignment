@@ -1,17 +1,21 @@
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import React from "react";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import { LoginInitiate } from "../redux/action";
 
 function Login() {
+
+  const dispatch = useDispatch()
+
   const initialvalues = {
     email: "",
     password: "",
   };
 
   const onSubmit = (values, props) => {
-    console.log(values);
-    console.log(props);
     setTimeout(() => {
+      dispatch(LoginInitiate(values))
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);

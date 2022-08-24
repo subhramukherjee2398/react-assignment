@@ -2,3 +2,6 @@ export const REGISTER_START  = "REGISTER_START";
 export const REGISTER_SUCCESSS  = "REGISTER_SUCCESSS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 
+export const LOGIN_START  = "LOGIN_START";
+export const LOGIN_SUCCESSS  = "LOGIN_SUCCESSS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
